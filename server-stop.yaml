@@ -1,0 +1,11 @@
+---
+
+- hosts: testservers
+  remote_user: ubuntu
+
+  tasks:
+   - name: stop nginx service
+     become: true
+     service: name=nginx state=stopped
+
+...

@@ -1,0 +1,18 @@
+---
+
+- hosts: testservers
+  remote_user: ubuntu
+
+  vars: 
+   - MyMessage: "Hello world!"
+   # - Mymessage1: "Team member: Zhe Li, Shunyu Zhao"
+
+  tasks:
+   - name: Nginx setup
+     become: true
+     apt: pkg=nginx state=present update_cache=true
+
+   - name: index.html copy
+     become: true
+     template: src=index.html.j2  dest=/var/www/html/index.html
+     
